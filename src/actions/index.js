@@ -46,12 +46,13 @@ export const fetchStream = (id) => async dispatch => {
 export const editStream = (id, formValues) => async dispatch => {
   const response = await streams.patch(`/streams/${id}`, formValues); // we use PATCH request bc we exclude ID from update, this allows us to maintain the appropriate ID in our edited object
   
-  dispatch({ type: EDIT_STREAM, payload: response.data })
+  dispatch({ type: EDIT_STREAM, payload: response.data });
   history.push('/'); 
 };
 
 export const deleteStream = (id) => async dispatch => {
   await streams.delete(`/streams/${id}`);
   
-  dispatch({ type: DELETE_STREAM, payload: id })
+  dispatch({ type: DELETE_STREAM, payload: id });
+  history.push('/');
 };

@@ -12,10 +12,8 @@ class StreamList extends React.Component {
     if (stream.userId === this.props.currentUserId) {
       return(
         <div className="right floated content">
-          <Link to={`/streams/edit/${stream.id}`} className="ui button primary ">Edit</Link>
-          <Link to={`/streams/delete/${stream.id}`}>
-          
-          </Link>
+          <Link to={`/streams/edit/${stream.id}`} className="ui button">Edit</Link>
+          <Link to={`/streams/delete/${stream.id}`} className="ui button primary">Delete</Link>
         </div>
       )
     }
@@ -28,7 +26,9 @@ class StreamList extends React.Component {
           {this.renderAdmin(stream)} {/* we have to call renderAdmin here for Semantic UI to style appropriately */}
           <i className="large middle aligned icon camera" />
           <div className="content">
+            <Link to={`/streams/${stream.id}`} className="header">
             {stream.title}
+            </Link>
             <div className="description">{stream.description}</div>
           </div>
           
